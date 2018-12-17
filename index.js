@@ -13,7 +13,7 @@ console.log(__dirname)
 //Middleware
 app.use(bodyParser.json())
 app.listen(port);
-console.log('running the server on port: ', port)
+console.log('running the server on port: ', port + '...')
 
 export default app;
 require('./api/kitty')
