@@ -1,0 +1,1 @@
+export const mongoURL = 'mongodb+srv://mubashir:foodApp@cluster0-im53z.mongodb.net/test?retryWrites=true'

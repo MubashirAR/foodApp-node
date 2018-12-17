@@ -1,0 +1,41 @@
+{
+  "name": "foodapp",
+  "version": "1.0.0",
+  "description": "An app that allows users to browse through nearby eateries using google maps api, future plans to add booking and a delivery app as well",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gulp && node app.js",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MubashirAR/foodApp-node.git"
+  },
+  "author": "Mubashir Reshamwala",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MubashirAR/foodApp-node/issues"
+  },
+  "homepage": "https://github.com/MubashirAR/foodApp-node#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.0",
+    "@babel/register": "^7.0.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^7.0.0-0",
+    "babel-loader": "^7.1.5",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "gulp": "^4.0.0",
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-node-externals": "^1.7.2",
+    "webpack-stream": "^5.2.1"
+  }
+}
