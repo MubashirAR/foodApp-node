@@ -5,4 +5,4 @@ Node, Express
 ## Build tools: 
 Gulp, Webpack, Babel
 
-[Learn to make this] (https://www.youtube.com/channel/UCtiCh3C4mC_LHevLPNlJlcQ/videos).
+[Learn to make this](https://www.youtube.com/channel/UCtiCh3C4mC_LHevLPNlJlcQ/videos).
