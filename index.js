@@ -11,12 +11,21 @@ mongoose.connect(mongoURL);
 console.log(__dirname)
 
 //Middleware
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, POST, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    res.header('Access-Control-Max-Age', '86400');
+    next();
+})
 app.use(bodyParser.json())
+
 app.listen(port);
 console.log('running the server on port: ', port + '...')
 
 export default app;
 require('./api/kitty')
+require('./api/users')
 
 
 
