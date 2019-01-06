@@ -39,10 +39,6 @@ app.post('/login', async function(req, res){
         const username = req.body.username
         const password = req.body.password
 
-        // Check username and password are available
-        if(!username || !password)
-            return res.json({status: 'failure', reason: 'missing username or password'})
-
         // Fire the query
         var response = await userSchema.findOne({username: req.body.username});
 
@@ -62,7 +58,7 @@ app.post('/login', async function(req, res){
         }
 
     } catch (error) {
-        // Error 💔
+        // Mongo Error 💔
         res.send({status: 'failure', reason: error.message});
     }
 });
