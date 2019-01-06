@@ -19,9 +19,12 @@
   },
   "homepage": "https://github.com/MubashirAR/foodApp-node#readme",
   "dependencies": {
+    "@kdf/salt": "^1.0.1",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "express": "^4.16.4",
+    "hash.js": "^1.1.7",
+    "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.4.0"
   },
   "devDependencies": {
