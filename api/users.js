@@ -10,7 +10,9 @@ import userSchema from '../models/user'
 
 const ObjectID = mongoose.Types.ObjectId;
 
-app.post('/registerUser', async function(req, res){
+
+// Methods
+const registerUser = async (req, res) => {
     var user = {...req.body};
     // Generate salt and hash
     const salt = (await gensalt(16)).toString('hex');
@@ -22,19 +24,22 @@ app.post('/registerUser', async function(req, res){
         var response = await userToSave.save();
         // Successfully saved ✅
         if(response._id)
-            res.send({status: 'success', data: response});
+            res.sendResponse(true,response)
+            // res.send({status: 'success', data: response});
         else // Failed to save ❌
-            res.send({status: 'failure', reason: response})
+            res.sendResponse(false, response)
+            // res.send({status: 'failure', reason: response})
     } catch (error) {
         // Error 💔
-        res.send({status: 'failure', reason: error.message});
+        res.sendResponse(false, error.message)
+        // res.send({status: 'failure', reason: error.message});
     }
-});
-app.get('/users', async function(req, res){
+}
+const users = async (req, res) => {
     var response = await userSchema.find();
-    res.send(response);
-});
-app.post('/login', async function(req, res){
+    res.sendResponse(false, response)
+}
+const login = async (req, res) => {
     try {
         const username = req.body.username
         const password = req.body.password
@@ -51,14 +56,22 @@ app.post('/login', async function(req, res){
                 return res.json({status: 'failure', reason: 'incorrect password'})
             // Correct password, generate token ✅
             var token = jwt.sign({id:response._id}, response.salt, { expiresIn: '1h' })
-            res.send({status: 'success', data: response, token});
+            res.sendResponse(true,response, token)
+            // res.send({status: 'success', data: response, token});
         } else {
             // User not found or mongo error
-            res.send({status: 'failure', reason: response});
+            res.sendResponse(false,response)
+            // res.send({status: 'failure', reason: response});
         }
 
     } catch (error) {
         // Mongo Error 💔
-        res.send({status: 'failure', reason: error.message});
+        res.sendResponse(true,error.message)
+        // res.send({status: 'failure', reason: error.message});
     }
-});
+}
+
+// Apis
+app.post('/registerUser', registerUser);
+app.get('/users', users);
+app.post('/login', login);

@@ -1,13 +1,16 @@
 import mongoose from 'mongoose';
 const userSchema = mongoose.Schema({
     username: {type:String, required: true, unique: true},
-    first_name: String,
-    last_name: String,
+    first_name: {type:String, required: true},
+    last_name: {type:String, required: true},
+    mobile: {type: Number, required: true, unique: true},
+    email: {type:String, required: true, unique: true},
     salt: {type:String, required: true},
     hash: {type:String, required: true}
 });
 
 // Validations
 userSchema.path('username').validate(username => username.length > 5, 'should be atleast 6 characters')
+userSchema.path('email').validate(email => /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/.test(email) , 'should be a valid email')
 
-export default mongoose.model('user', userSchema)
+export default mongoose.model('user', userSchema);

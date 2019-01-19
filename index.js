@@ -18,6 +18,14 @@ app.use((req, res, next) => {
     res.header('Access-Control-Max-Age', '86400');
     next();
 })
+app.use((req, res, next) => {
+    res.sendResponse = (isSuccessful, data, token) => {
+        console.log('success response');
+        const status = isSuccessful? 'success' : 'failure';
+        res.send({status: isSuccessful, data, token})
+    }
+    next();
+})
 app.use(bodyParser.json())
 
 app.listen(port);
