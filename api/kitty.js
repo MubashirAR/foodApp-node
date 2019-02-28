@@ -1,8 +1,10 @@
 import app from '../index';
 import Cat from '../models/kitty'
 // Endpoints
-app.get('/', function(req, res){
+app.post('/helloworld', function(req, res){
+    console.log('Hello World')
     res.send("Hello world!");
+
 });
 app.get('/addKitty', function(req, res){
 
