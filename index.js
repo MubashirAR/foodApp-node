@@ -22,7 +22,7 @@ app.use((req, res, next) => {
     res.sendResponse = (isSuccessful, data, token) => {
         console.log('success response');
         const status = isSuccessful? 'success' : 'failure';
-        res.send({status: isSuccessful, data, token})
+        res.send({status: status, data, token})
     }
     next();
 })
