@@ -32,10 +32,15 @@ app.listen(port);
 console.log('running the server on port: ', port + '...')
 
 export default app;
-require('./api/kitty')
-require('./api/users')
+// require('./api/kitty')
+// require('./api/users')
 
 
 
+const apiFolder = './api/';
+const fs = require('fs');
 
+fs.readdir(apiFolder, (err, files) => {
+  files.forEach(file => require('./api/' + file));
+});
 
