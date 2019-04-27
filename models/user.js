@@ -1,4 +1,6 @@
 import mongoose from 'mongoose';
+var ObjectId = mongoose.Schema.Types.ObjectId;
+import cartSchema from './cart';
 const userSchema = mongoose.Schema({
     username: {type:String, required: true, unique: true},
     first_name: {type:String, required: true},
@@ -6,7 +8,9 @@ const userSchema = mongoose.Schema({
     mobile: {type: Number, required: true, unique: true},
     email: {type:String, required: true, unique: true},
     salt: {type:String, required: true},
-    hash: {type:String, required: true}
+    hash: {type:String, required: true},
+    addresses: [{type: ObjectId, ref: 'address'}],
+    cart: cartSchema
 });
 
 // Validations

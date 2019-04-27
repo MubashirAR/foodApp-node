@@ -2,16 +2,11 @@ import mongoose from 'mongoose';
 import addressSchema from './address'
 
 var ObjectId = mongoose.Schema.Types.ObjectId;
-const foodItemSchema = new mongoose.Schema({
-    name: {type:String, required: true},
-    price: {type:Number, required: true},
-    description: {type:String, required: true},
-    category: {type:String, required: true},
-    ingredients: [{type:String}]
-})
-
+import foodItemSchema from './foodItem';
 const restaurantSchema = mongoose.Schema({
     name: {type:String, required: true},
+    salt: {type:String, required: true},
+    hash: {type:String, required: true},
     email: {type:String, required: true, unique: true},
     bio: {type:String},
     address: {type: ObjectId, ref: 'address', required:true},

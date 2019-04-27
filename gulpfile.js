@@ -5,5 +5,5 @@ const webpackConfig = require('./webpack.config.js');
 exports.default =  function() {
   return src(['src/linker.js'])
     .pipe(webpackStream(webpackConfig), webpack)
-    .pipe(dest('./dist'));
+    .pipe(dest('./output'));
 }
